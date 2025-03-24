@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra Seu Orixá</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Adicionando música de fundo -->
+    <audio id="background-music" loop autoplay>
+        <source src="sua-musica-de-fundo.mp3" type="audio/mp3">
+        Seu navegador não suporta o áudio.
+    </audio>
+
+    <div class="container">
+        <h1>Descubra seu Orixá!</h1>
+        <p>Escolha um número e veja qual orixá está com você!</p>
+        <select id="orixaDropdown">
+            <option value="">Selecione um número</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const orixas = [
+            { nome: "Iemanjá", frase: "Você é Iemanjá, então pode se jogar no mar!" },
+            { nome: "Oxóssi", frase: "Você é Oxóssi, seja um bom caçador, pegue uma fruta na geladeira" },
+            { nome: "Ogum", frase: "Você é Ogum! Guerreiro e destemido, nada pode te parar!" },
+            { nome: "Xangô", frase: "Você é Xangô, o rei do trovão! Não ouse mexer com sua justiça!" },
+            { nome: "Oxum", frase: "Você é Oxum, a deusa do amor e da beleza! Se joga no brilho da sua vida!" },
+            { nome: "Iansã", frase: "Você é Iansã, senhora dos ventos! Vai com tudo e não olha pra trás!" },
+            { nome: "Nanã", frase: "Você é Nanã, a sabedoria das águas profundas. Fique calma, tudo se resolve!" }
+        ];
+
+        document.getElementById('orixaDropdown').addEventListener('change', function() {
+            const valorSelecionado = this.value;
+            const resultado = document.getElementById('result');
+            
+            if (valorSelecionado !== "") {
+                const orixa = orixas[valorSelecionado - 1];
+                resultado.innerHTML = `Seu orixá é: <strong>${orixa.nome}</strong><br>${orixa.frase}`;
+            } else {
+                resultado.innerHTML = "";
+            }
+        });
+    </script>
+
+</body>
+</html>
